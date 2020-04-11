@@ -3,7 +3,9 @@ PODS:
   - Nimble (7.3.4)
   - PrivacyInSwift (0.1.0):
     - Alamofire (~> 5.1)
+    - SwiftyJSON (~> 4.0)
   - Quick (1.2.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Nimble (~> 7.0)
@@ -15,6 +17,7 @@ SPEC REPOS:
     - Alamofire
     - Nimble
     - Quick
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
   PrivacyInSwift:
@@ -23,8 +26,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  PrivacyInSwift: 46fcba1ddc179927c3990e9951de59326d463cb8
+  PrivacyInSwift: de9c6e575d699928801e4000aaebaefb4a6b0b4c
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
 PODFILE CHECKSUM: 453e1c5d0dfc6c6f5818d4b4fcfc1afad8546c74
 

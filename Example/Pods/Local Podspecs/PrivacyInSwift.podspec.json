@@ -23,6 +23,9 @@
   "dependencies": {
     "Alamofire": [
       "~> 5.1"
+    ],
+    "SwiftyJSON": [
+      "~> 4.0"
     ]
   }
 }

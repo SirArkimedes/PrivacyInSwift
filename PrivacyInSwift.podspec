@@ -28,7 +28,7 @@ A wrapper around the privacy.com API written in Swift.
   s.source           = { :git => 'https://github.com/SirArkimedes/PrivacyInSwift.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/SirArkimedes'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'PrivacyInSwift/Classes/**/*'
   
@@ -38,5 +38,5 @@ A wrapper around the privacy.com API written in Swift.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'Alamofire', '~> 5.1'
 end

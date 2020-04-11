@@ -1,6 +1,8 @@
 PODS:
+  - Alamofire (5.1.0)
   - Nimble (7.3.4)
-  - PrivacyInSwift (0.1.0)
+  - PrivacyInSwift (0.1.0):
+    - Alamofire (~> 5.1)
   - Quick (1.2.0)
 
 DEPENDENCIES:
@@ -10,6 +12,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Nimble
     - Quick
 
@@ -18,8 +21,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  PrivacyInSwift: d8aceef3023c79cf11d661c2cf09fb27114e22db
+  PrivacyInSwift: 46fcba1ddc179927c3990e9951de59326d463cb8
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
 PODFILE CHECKSUM: 453e1c5d0dfc6c6f5818d4b4fcfc1afad8546c74

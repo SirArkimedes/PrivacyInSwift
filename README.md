@@ -1,6 +1,6 @@
 # PrivacyInSwift
 
-[![CI Status](https://img.shields.io/travis/Andrew Robinson/PrivacyInSwift.svg?style=flat)](https://travis-ci.org/Andrew Robinson/PrivacyInSwift)
+[![CI Status](https://img.shields.io/travis/SirArkimedes/PrivacyInSwift.svg?style=flat)](https://travis-ci.org/Andrew Robinson/PrivacyInSwift)
 [![Version](https://img.shields.io/cocoapods/v/PrivacyInSwift.svg?style=flat)](https://cocoapods.org/pods/PrivacyInSwift)
 [![License](https://img.shields.io/cocoapods/l/PrivacyInSwift.svg?style=flat)](https://cocoapods.org/pods/PrivacyInSwift)
 [![Platform](https://img.shields.io/cocoapods/p/PrivacyInSwift.svg?style=flat)](https://cocoapods.org/pods/PrivacyInSwift)

@@ -1,9 +1,9 @@
 {
   "name": "PrivacyInSwift",
   "version": "0.1.0",
-  "summary": "A short description of PrivacyInSwift.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Andrew Robinson/PrivacyInSwift",
+  "summary": "A Swift wrapper around the Privacy API.",
+  "description": "A wrapper around the privacy.com API written in Swift.",
+  "homepage": "https://github.com/SirArkimedes/PrivacyInSwift",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,9 +12,10 @@
     "Andrew Robinson": "sirarkimedes@gmail.com"
   },
   "source": {
-    "git": "https://github.com/Andrew Robinson/PrivacyInSwift.git",
+    "git": "https://github.com/SirArkimedes/PrivacyInSwift.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/SirArkimedes",
   "platforms": {
     "ios": "8.0"
   },

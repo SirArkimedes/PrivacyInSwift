@@ -1,0 +1,6 @@
+framework module PrivacyInSwift {
+  umbrella header "PrivacyInSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

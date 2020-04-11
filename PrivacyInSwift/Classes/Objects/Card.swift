@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import SwiftyJSON
 
-public struct FundingAccount {
+public struct FundingAccount: Codable {
 }
 
+// MARK: - Card
+
 /// https://developer.privacy.com/docs#schema-card
-public struct Card {
+public struct Card: Codable {
     /// Globally unique identifier
     var token: String
 
@@ -41,25 +44,31 @@ public struct Card {
     var state: State
     /// See `CardType`
     var type: CardType
+
+    static func encoder() -> JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        return encoder
+    }
 }
 
 // MARK: - Card types
 
 extension Card {
-    public enum SpendLimitDuration: String {
+    public enum SpendLimitDuration: String, Codable {
         case TRANSACTION
         case MONTHLY
         case ANNUALLY
         case FOREVER
     }
 
-    public enum State: String {
+    public enum State: String, Codable {
         case OPEN
         case PAUSED
         case CLOSED
     }
 
-    public enum CardType: String {
+    public enum CardType: String, Codable {
         case SINGLE_USE
         case MERCHANT_LOCKED
         case UNLOCKED

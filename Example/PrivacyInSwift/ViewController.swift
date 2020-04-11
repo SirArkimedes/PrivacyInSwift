@@ -14,6 +14,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         Privacy.instance.listCards()
+        Privacy.instance.createCard()
+        Privacy.instance.listCards()
     }
 }
 

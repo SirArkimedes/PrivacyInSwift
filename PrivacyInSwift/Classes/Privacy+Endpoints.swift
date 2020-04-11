@@ -19,4 +19,9 @@ extension Privacy {
     public func listCards() {
         AlamofirePrivacy.get(route: "card", privacy: Privacy.instance)
     }
+
+    public func createCard() {
+        AlamofirePrivacy.post(route: "card", json: ["memo": "The Most Friendly Card",
+                                                    "type": "SINGLE_USE"], privacy: Privacy.instance)
+    }
 }

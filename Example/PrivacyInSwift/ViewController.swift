@@ -12,6 +12,8 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Privacy.instance.listCards()
     }
 }
 

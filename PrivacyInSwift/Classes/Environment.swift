@@ -14,14 +14,14 @@ public enum Environment {
     static let productionRoute = "https://api.privacy.com"
     static let sandboxRoute = "https://sandbox.privacy.com"
 
-    func url() -> URL {
-        let urlString: String
+    func route() -> String {
+        let route: String
         switch self {
         case .production:
-            urlString = Environment.productionRoute
+            route = Environment.productionRoute
         case .sandbox:
-            urlString = Environment.sandboxRoute
+            route = Environment.sandboxRoute
         }
-        return URL(string: urlString)!
+        return route
     }
 }

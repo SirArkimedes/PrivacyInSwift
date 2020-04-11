@@ -8,15 +8,23 @@
 import Foundation
 
 public class Privacy {
-    static public let instance = Privacy()
+    static public let instance = Privacy(productionApiKey: "", sandboxApiKey: "")
 
-    /// Specifys which privacy.com environment to connect to. Defaults to `.production`.
+    /// Specifies which privacy.com environment to connect to. Defaults to `.production`.
     public var environment: Environment = .production
 
-    private(set) var productionApiKey: String?
-    private(set) var sandboxApiKey: String?
+    /// Specifies which version of the privacy.com API the request will hit.
+    public var apiVersion: ApiVersion = .v1
 
-    public func start(productionApiKey: String, sandboxApiKey: String?) {
+    private(set) var productionApiKey: String
+    private(set) var sandboxApiKey: String
+
+    private init(productionApiKey: String, sandboxApiKey: String) {
+        self.productionApiKey = productionApiKey
+        self.sandboxApiKey = sandboxApiKey
+    }
+
+    public func start(productionApiKey: String, sandboxApiKey: String) {
         self.productionApiKey = productionApiKey
         self.sandboxApiKey = sandboxApiKey
     }

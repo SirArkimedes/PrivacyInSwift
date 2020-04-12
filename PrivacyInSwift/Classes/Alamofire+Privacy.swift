@@ -13,9 +13,9 @@ struct AlamofirePrivacy {
     // MARK: - Builders
 
     static func get(route: String, privacy: Privacy) {
-        let route = createRoute(for: privacy, with: route)
+        let r = createRoute(for: privacy, with: route)
         let headers = standardHeadersAppendingApiKey(for: privacy)
-        AF.request(route, headers: headers).responseJSON { response in
+        AF.request(r, headers: headers).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -26,10 +26,46 @@ struct AlamofirePrivacy {
         }
     }
 
-    static func post(route: String, json: JSON, privacy: Privacy) {
-        let route = createRoute(for: privacy, with: route)
+    static func post(route: String, parameters: [String: Any], privacy: Privacy) {
+        let r = createRoute(for: privacy, with: route)
         let headers = standardHeadersAppendingApiKey(for: privacy)
-        AF.request(route, method: .post, parameters: json, headers: headers).responseJSON { response in
+        print(parameters)
+        print(r)
+        print(headers)
+        AF.request(
+            r,
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: headers
+        ).responseJSON { response in
+            print()
+            print(response.description)
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    static func put(route: String, parameters: [String: Any], privacy: Privacy) {
+        let r = createRoute(for: privacy, with: route)
+        let headers = standardHeadersAppendingApiKey(for: privacy)
+        print(parameters)
+        print(r)
+        print(headers)
+        AF.request(
+            r,
+            method: .put,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: headers
+        ).responseJSON { response in
+            print()
+            print(response.description)
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

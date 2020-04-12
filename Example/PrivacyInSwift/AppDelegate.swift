@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Privacy.instance.start(productionApiKey: "", sandboxApiKey: "")
+        Privacy.instance.start(productionApiKey: "", sandboxApiKey: "5871733b-3c96-4fac-bed7-4fa9cdc572c4")
         Privacy.instance.environment = .sandbox
         return true
     }

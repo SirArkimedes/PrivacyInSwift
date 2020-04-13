@@ -12,14 +12,15 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Privacy.instance.createCard()
-//        Privacy.instance.updateCard()
-//        Privacy.instance.listCards()
-        Privacy.instance.getCard(for: "") { card, error in
-            if let card = card {
-                print(card)
-            }
-        }
+        Privacy.listCards()
+//        Privacy.getCard(for: "") { card, error in
+//            if let card = card {
+//                print(card)
+//            }
+//        }
+        
+//        Privacy.createCard()
+//        Privacy.updateCard()
     }
 }
 

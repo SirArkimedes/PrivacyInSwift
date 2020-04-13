@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-extension Privacy {
+extension PrivacyInSwift {
     public typealias GetCardCompletion = (FullCard?, Error?) -> ()
 
     public func listCards() {

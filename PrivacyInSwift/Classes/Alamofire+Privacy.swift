@@ -11,7 +11,7 @@ import SwiftyJSONModel
 
 struct AlamofirePrivacy {
 
-    private static let privacy = Privacy.instance
+    private static let privacy = PrivacyInSwift.instance
 
     // MARK: - Builders
 

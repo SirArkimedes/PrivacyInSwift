@@ -7,8 +7,10 @@
 
 import Foundation
 
-public class Privacy {
-    static public let instance = Privacy(productionApiKey: "", sandboxApiKey: "")
+public let Privacy = PrivacyInSwift.instance
+
+public class PrivacyInSwift {
+    static public let instance = PrivacyInSwift(productionApiKey: "", sandboxApiKey: "")
 
     /// Specifies which privacy.com environment to connect to. Defaults to `.production`.
     public var environment: Environment = .production

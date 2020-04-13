@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+import SwiftyJSONModel
 
 // MARK: - FullCard
 
@@ -43,10 +43,33 @@ public struct FullCard {
     var type: CardType
 }
 
-// MARK: - Codable
+// MARK: - Card types
 
-extension FullCard: Codable {
-    enum CodingKeys: String, CodingKey {
+extension FullCard {
+    public enum SpendLimitDuration: String, JSONString {
+        case TRANSACTION
+        case MONTHLY
+        case ANNUALLY
+        case FOREVER
+    }
+
+    public enum State: String, JSONString {
+        case OPEN
+        case PAUSED
+        case CLOSED
+    }
+
+    public enum CardType: String, JSONString {
+        case SINGLE_USE
+        case MERCHANT_LOCKED
+        case UNLOCKED
+    }
+}
+
+// MARK: - JSONModelType
+
+extension FullCard: JSONModelType {
+    public enum PropertyKey: String {
         case token
         case created
         case cvv
@@ -60,67 +83,43 @@ extension FullCard: Codable {
         case spendLimit = "spend_limit"
         case spendLimitDuration = "spend_limit_duration"
         case state
-        case cardType
+        case cardType = "type"
     }
 
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        token = try container.decode(String.self, forKey: .token)
+    public init(object: JSONObject<PropertyKey>) throws {
+        token = try object.value(for: .token)
 
-        created = try container.decode(String.self, forKey: .created)
-        cvv = try container.decode(String.self, forKey: .cvv)
-        funding = try container.decode(FundingAccount.self, forKey: .funding)
-        expMonth = try container.decode(String.self, forKey: .expMonth)
-        expYear = try container.decode(String.self, forKey: .expYear)
-        hostname = try container.decode(String.self, forKey: .hostname)
-        lastFour = try container.decode(String.self, forKey: .lastFour)
-        memo = try container.decode(String.self, forKey: .memo)
-        pan = try container.decode(String.self, forKey: .pan)
-        spendLimit = try container.decode(Int.self, forKey: .spendLimit)
-        spendLimitDuration = try container.decode(SpendLimitDuration.self, forKey: .spendLimitDuration)
-        state = try container.decode(State.self, forKey: .state)
-        type = try container.decode(CardType.self, forKey: .cardType)
+        created = try object.value(for: .created)
+        cvv = try object.value(for: .cvv)
+        funding = try object.value(for: .funding)
+        expMonth = try object.value(for: .expMonth)
+        expYear = try object.value(for: .expYear)
+        hostname = try object.value(for: .hostname)
+        lastFour = try object.value(for: .lastFour)
+        memo = try object.value(for: .memo)
+        pan = try object.value(for: .pan)
+        spendLimit = try object.value(for: .spendLimit)
+        spendLimitDuration = try object.value(for: .spendLimitDuration)
+        state = try object.value(for: .state)
+        type = try object.value(for: .cardType)
     }
 
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(token, forKey: .token)
-
-        try container.encode(created, forKey: .created)
-        try container.encode(cvv, forKey: .cvv)
-        try container.encode(funding, forKey: .funding)
-        try container.encode(expMonth, forKey: .expMonth)
-        try container.encode(expYear, forKey: .expYear)
-        try container.encode(hostname, forKey: .hostname)
-        try container.encode(lastFour, forKey: .lastFour)
-        try container.encode(memo, forKey: .memo)
-        try container.encode(pan, forKey: .pan)
-        try container.encode(spendLimit, forKey: .spendLimit)
-        try container.encode(spendLimitDuration , forKey: .spendLimitDuration)
-        try container.encode(state, forKey: .state)
-        try container.encode(type, forKey: .cardType)
-    }
-}
-
-// MARK: - Card types
-
-extension FullCard {
-    public enum SpendLimitDuration: String, Codable {
-        case TRANSACTION
-        case MONTHLY
-        case ANNUALLY
-        case FOREVER
-    }
-
-    public enum State: String, Codable {
-        case OPEN
-        case PAUSED
-        case CLOSED
-    }
-
-    public enum CardType: String, Codable {
-        case SINGLE_USE
-        case MERCHANT_LOCKED
-        case UNLOCKED
+    public var dictValue: [PropertyKey: JSONRepresentable?] {
+        return [
+            .token: token,
+            .created: created,
+            .cvv: cvv,
+            .funding: funding,
+            .expMonth: expMonth,
+            .expYear: expYear,
+            .hostname: hostname,
+            .lastFour: lastFour,
+            .memo: memo,
+            .pan: pan,
+            .spendLimit: spendLimit,
+            .spendLimitDuration: spendLimitDuration,
+            .state: state,
+            .cardType: type,
+        ]
     }
 }

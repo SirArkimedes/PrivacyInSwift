@@ -11,10 +11,14 @@ import Alamofire
 extension Privacy {
     public func listCards() {
         AlamofirePrivacy.get(route: "card") { page, error in
-            if let page = page {
-                print(page)
-            } else if let error = error {
+            if let error = error {
                 print(error)
+            } else if let page = page {
+                var cards = [FullCard]()
+                for json in page.data.array ?? [] {
+                    cards.append(try! FullCard(json: json))
+                }
+                print(cards)
             }
         }
     }

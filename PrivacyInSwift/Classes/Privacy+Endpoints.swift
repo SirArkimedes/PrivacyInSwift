@@ -9,14 +9,16 @@ import Foundation
 import Alamofire
 
 extension PrivacyInSwift {
+    public typealias ListCardsCompletion = ([FullCard]?, Error?) -> ()
     public typealias GetCardCompletion = (FullCard?, Error?) -> ()
 
-    public func listCards() {
+    public func listCards(completion: @escaping ListCardsCompletion) {
         AlamofirePrivacy.get(route: "card") { (page: Page<FullCard>?, error: Error?) in
             if let error = error {
                 print(error)
+                completion(nil, error)
             } else if let page = page {
-                print(page.data)
+                completion(page.data, nil)
             }
         }
     }

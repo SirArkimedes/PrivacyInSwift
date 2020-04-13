@@ -26,6 +26,9 @@
     ],
     "SwiftyJSON": [
       "~> 4.0"
+    ],
+    "SwiftyJSONModel": [
+      "~> 2.3.0"
     ]
   }
 }

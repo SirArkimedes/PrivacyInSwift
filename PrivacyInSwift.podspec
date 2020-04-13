@@ -40,4 +40,5 @@ A wrapper around the privacy.com API written in Swift.
   # s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'Alamofire', '~> 5.1'
    s.dependency 'SwiftyJSON', '~> 4.0'
+   s.dependency 'SwiftyJSONModel', '~> 2.3.0'
 end

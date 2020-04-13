@@ -12,33 +12,22 @@ extension Privacy {
     public typealias GetCardCompletion = (FullCard?, Error?) -> ()
 
     public func listCards() {
-        AlamofirePrivacy.get(route: "card") { page, error in
+        AlamofirePrivacy.get(route: "card") { (page: Page<FullCard>?, error: Error?) in
             if let error = error {
                 print(error)
             } else if let page = page {
-                var cards = [FullCard]()
-                for json in page.data.array ?? [] {
-                    cards.append(try! FullCard(json: json))
-                }
-                print(cards)
+                print(page.data)
             }
         }
     }
 
     public func getCard(for token: String, completion: @escaping GetCardCompletion) {
-        AlamofirePrivacy.get(route: "card", parameters: ["card_token": token]) { page, error in
+        AlamofirePrivacy.get(route: "card", parameters: ["card_token": token]) { (page: Page<FullCard>?, error: Error?) in
             if let error = error {
                 print(error)
                 completion(nil, error)
-            } else if let page = page {
-                var cards = [FullCard]()
-                for json in page.data.array ?? [] {
-                    cards.append(try! FullCard(json: json))
-                }
-
-                if cards.count == 1 {
-                    completion(cards[0], nil)
-                }
+            } else if let page = page, page.data.count == 1 {
+                completion(page.data[0], nil)
             }
         }
     }

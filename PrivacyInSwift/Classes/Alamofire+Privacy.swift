@@ -7,16 +7,19 @@
 
 import Alamofire
 import SwiftyJSON
+import SwiftyJSONModel
 
 struct AlamofirePrivacy {
-
-    typealias GetCompletion = (Page?, Error?) -> ()
 
     private static let privacy = Privacy.instance
 
     // MARK: - Builders
 
-    static func get(route: String, parameters: [String: AnyHashable]? = nil, completion: @escaping GetCompletion) {
+    static func get<T: JSONModelType>(
+        route: String,
+        parameters: [String: AnyHashable]? = nil,
+        completion: @escaping (Page<T>?, Error?) -> ()
+    ) {
         let r = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
         AF.request(
@@ -28,7 +31,7 @@ struct AlamofirePrivacy {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let page = try? Page(json: json)
+                let page = try? Page<T>(json: json)
                 completion(page, nil)
             case .failure(let error):
                 completion(nil, error)
@@ -36,7 +39,10 @@ struct AlamofirePrivacy {
         }
     }
 
-    static func post(route: String, parameters: [String: AnyHashable]) {
+    static func post(
+        route: String,
+        parameters: [String: AnyHashable]
+    ) {
         let r = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
         AF.request(
@@ -56,7 +62,10 @@ struct AlamofirePrivacy {
         }
     }
 
-    static func put(route: String, parameters: [String: AnyHashable]) {
+    static func put(
+        route: String,
+        parameters: [String: AnyHashable]
+    ) {
         let r = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
         AF.request(

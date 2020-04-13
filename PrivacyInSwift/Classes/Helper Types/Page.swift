@@ -9,8 +9,8 @@ import Foundation
 import SwiftyJSON
 import SwiftyJSONModel
 
-struct Page: JSONModelType {
-    let data: JSON
+struct Page<T: JSONModelType>: JSONModelType {
+    let data: [T]
     let page: Int
     let totalEntries: Int
     let totalPages: Int
@@ -31,7 +31,7 @@ struct Page: JSONModelType {
 
     var dictValue: [PropertyKey: JSONRepresentable?] {
         return [
-            .data: data,
+            .data: data.jsonRepresantable,
             .page: totalEntries,
             .totalPages: totalPages,
         ]

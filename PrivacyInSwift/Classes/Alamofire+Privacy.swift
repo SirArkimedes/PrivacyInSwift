@@ -7,6 +7,7 @@
 
 import Alamofire
 import SwiftyJSON
+import SwiftyJSONModel
 
 struct AlamofirePrivacy {
 
@@ -20,25 +21,32 @@ struct AlamofirePrivacy {
        "total_pages": Integer
      }
      */
-    struct Page: Codable {
+    struct Page: JSONModelType {
         let data: JSON
         let page: Int
         let totalEntries: Int
         let totalPages: Int
 
-        enum CodingKeys: String, CodingKey {
+        enum PropertyKey: String {
             case data
             case page
             case totalEntries = "total_entries"
             case totalPages = "total_pages"
         }
 
-        init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            data = try values.decode(JSON.self, forKey: .data)
-            page = try values.decode(Int.self, forKey: .page)
-            totalEntries = try values.decode(Int.self, forKey: .totalEntries)
-            totalPages = try values.decode(Int.self, forKey: .totalPages)
+        init(object: JSONObject<PropertyKey>) throws {
+            data = try object.value(for: .data)
+            page = try object.value(for: .page)
+            totalEntries = try object.value(for: .totalEntries)
+            totalPages = try object.value(for: .totalPages)
+        }
+
+        var dictValue: [PropertyKey: JSONRepresentable?] {
+            return [
+                .data: data,
+                .page: totalEntries,
+                .totalPages: totalPages,
+            ]
         }
     }
 
@@ -51,9 +59,8 @@ struct AlamofirePrivacy {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
-
-//                let page = try! Page(from: JSONDecoder().decode(Page.self, from: json.rawData()))
+                let page = try! Page(json: json)
+                print(page)
             case .failure(let error):
                 print(error)
             }

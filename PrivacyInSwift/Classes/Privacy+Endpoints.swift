@@ -10,7 +10,7 @@ import Alamofire
 
 extension Privacy {
     public func listCards() {
-        let json = AlamofirePrivacy.get(route: "card", privacy: Privacy.instance)
+        AlamofirePrivacy.get(route: "card", privacy: Privacy.instance)
     }
 
     public func createCard() {

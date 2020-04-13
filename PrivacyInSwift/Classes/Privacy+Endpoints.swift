@@ -9,6 +9,8 @@ import Foundation
 import Alamofire
 
 extension Privacy {
+    public typealias GetCardCompletion = (FullCard?, Error?) -> ()
+
     public func listCards() {
         AlamofirePrivacy.get(route: "card") { page, error in
             if let error = error {
@@ -19,6 +21,24 @@ extension Privacy {
                     cards.append(try! FullCard(json: json))
                 }
                 print(cards)
+            }
+        }
+    }
+
+    public func getCard(for token: String, completion: @escaping GetCardCompletion) {
+        AlamofirePrivacy.get(route: "card", parameters: ["card_token": token]) { page, error in
+            if let error = error {
+                print(error)
+                completion(nil, error)
+            } else if let page = page {
+                var cards = [FullCard]()
+                for json in page.data.array ?? [] {
+                    cards.append(try! FullCard(json: json))
+                }
+
+                if cards.count == 1 {
+                    completion(cards[0], nil)
+                }
             }
         }
     }

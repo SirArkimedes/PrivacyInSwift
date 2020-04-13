@@ -14,7 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        Privacy.instance.createCard()
 //        Privacy.instance.updateCard()
-        Privacy.instance.listCards()
+//        Privacy.instance.listCards()
+        Privacy.instance.getCard(for: "") { card, error in
+            if let card = card {
+                print(card)
+            }
+        }
     }
 }
 

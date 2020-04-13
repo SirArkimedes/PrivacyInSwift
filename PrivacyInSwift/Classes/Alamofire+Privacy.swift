@@ -16,10 +16,15 @@ struct AlamofirePrivacy {
 
     // MARK: - Builders
 
-    static func get(route: String, completion: @escaping GetCompletion) {
+    static func get(route: String, parameters: [String: AnyHashable]? = nil, completion: @escaping GetCompletion) {
         let r = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
-        AF.request(r, headers: headers).responseJSON { response in
+        AF.request(
+            r,
+            method: .get,
+            parameters: parameters,
+            headers: headers
+        ).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

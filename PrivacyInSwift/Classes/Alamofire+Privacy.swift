@@ -18,7 +18,7 @@ struct AlamofirePrivacy {
     static func get<T: JSONModelType>(
         route: String,
         parameters: [String: AnyHashable]? = nil,
-        completion: @escaping (Page<T>?, Error?) -> ()
+        completion: @escaping (Result<Page<T>, Error>) -> ()
     ) {
         let r = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
@@ -31,10 +31,13 @@ struct AlamofirePrivacy {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let page = try? Page<T>(json: json)
-                completion(page, nil)
+                if let page = try? Page<T>(json: json) {
+                    completion(.success(page))
+                } else {
+                    completion(.failure(NSError()))
+                }
             case .failure(let error):
-                completion(nil, error)
+                completion(.failure(error))
             }
         }
     }

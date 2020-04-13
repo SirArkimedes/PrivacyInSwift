@@ -9,27 +9,29 @@ import Foundation
 import Alamofire
 
 extension PrivacyInSwift {
-    public typealias ListCardsCompletion = ([FullCard]?, Error?) -> ()
-    public typealias GetCardCompletion = (FullCard?, Error?) -> ()
 
-    public func listCards(completion: @escaping ListCardsCompletion) {
-        AlamofirePrivacy.get(route: "card") { (page: Page<FullCard>?, error: Error?) in
-            if let error = error {
-                print(error)
-                completion(nil, error)
-            } else if let page = page {
-                completion(page.data, nil)
+    public func listCards(completion: @escaping (Result<[FullCard], Error>) -> ()) {
+        AlamofirePrivacy.get(route: "card") { (result: Result<Page<FullCard>, Error>) in
+            switch result {
+            case .success(let page):
+                completion(.success(page.data))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
 
-    public func getCard(for token: String, completion: @escaping GetCardCompletion) {
-        AlamofirePrivacy.get(route: "card", parameters: ["card_token": token]) { (page: Page<FullCard>?, error: Error?) in
-            if let error = error {
-                print(error)
-                completion(nil, error)
-            } else if let page = page, page.data.count == 1 {
-                completion(page.data[0], nil)
+    public func getCard(for token: String, completion: @escaping (Result<FullCard, Error>) -> ()) {
+        AlamofirePrivacy.get(route: "card", parameters: ["card_token": token]) { (result: Result<Page<FullCard>, Error>) in
+            switch result {
+            case .success(let page):
+                if page.data.count == 1 {
+                    completion(.success(page.data[0]))
+                } else {
+                    completion(.failure(NSError()))
+                }
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

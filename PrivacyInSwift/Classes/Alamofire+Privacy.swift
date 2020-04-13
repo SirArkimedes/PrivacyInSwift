@@ -10,6 +10,38 @@ import SwiftyJSON
 
 struct AlamofirePrivacy {
 
+    /*
+     {
+       "data": [
+         // API OBJECTS
+       ],
+       "page": Integer,
+       "total_entries": Integer,
+       "total_pages": Integer
+     }
+     */
+    struct Page: Codable {
+        let data: JSON
+        let page: Int
+        let totalEntries: Int
+        let totalPages: Int
+
+        enum CodingKeys: String, CodingKey {
+            case data
+            case page
+            case totalEntries = "total_entries"
+            case totalPages = "total_pages"
+        }
+
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            data = try values.decode(JSON.self, forKey: .data)
+            page = try values.decode(Int.self, forKey: .page)
+            totalEntries = try values.decode(Int.self, forKey: .totalEntries)
+            totalPages = try values.decode(Int.self, forKey: .totalPages)
+        }
+    }
+
     // MARK: - Builders
 
     static func get(route: String, privacy: Privacy) {
@@ -20,18 +52,17 @@ struct AlamofirePrivacy {
             case .success(let value):
                 let json = JSON(value)
                 print("JSON: \(json)")
+
+//                let page = try! Page(from: JSONDecoder().decode(Page.self, from: json.rawData()))
             case .failure(let error):
                 print(error)
             }
         }
     }
 
-    static func post(route: String, parameters: [String: Any], privacy: Privacy) {
+    static func post(route: String, parameters: [String: AnyHashable], privacy: Privacy) {
         let r = createRoute(for: privacy, with: route)
         let headers = standardHeadersAppendingApiKey(for: privacy)
-        print(parameters)
-        print(r)
-        print(headers)
         AF.request(
             r,
             method: .post,
@@ -39,8 +70,6 @@ struct AlamofirePrivacy {
             encoding: JSONEncoding.default,
             headers: headers
         ).responseJSON { response in
-            print()
-            print(response.description)
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -51,12 +80,9 @@ struct AlamofirePrivacy {
         }
     }
 
-    static func put(route: String, parameters: [String: Any], privacy: Privacy) {
+    static func put(route: String, parameters: [String: AnyHashable], privacy: Privacy) {
         let r = createRoute(for: privacy, with: route)
         let headers = standardHeadersAppendingApiKey(for: privacy)
-        print(parameters)
-        print(r)
-        print(headers)
         AF.request(
             r,
             method: .put,
@@ -64,8 +90,6 @@ struct AlamofirePrivacy {
             encoding: JSONEncoding.default,
             headers: headers
         ).responseJSON { response in
-            print()
-            print(response.description)
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

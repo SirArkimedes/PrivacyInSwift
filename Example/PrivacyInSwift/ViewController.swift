@@ -12,9 +12,7 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        Privacy.instance.listCards()
-        Privacy.instance.createCard()
+//        Privacy.instance.createCard()
 //        Privacy.instance.updateCard()
         Privacy.instance.listCards()
     }

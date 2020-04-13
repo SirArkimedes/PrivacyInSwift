@@ -556,14 +556,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FA52FDC1092F30D3BF9B15775D68FAD /* PrivacyObjects */ = {
+		0FA52FDC1092F30D3BF9B15775D68FAD /* Privacy Objects */ = {
 			isa = PBXGroup;
 			children = (
 				C332C8530208667F92D7CC0A2F5AD2B1 /* FullCard.swift */,
 				DAA6642FDADE0307AB5BC08C559AE409 /* FundingAccount.swift */,
 			);
-			name = PrivacyObjects;
-			path = PrivacyInSwift/Classes/PrivacyObjects;
+			name = "Privacy Objects";
+			path = "PrivacyInSwift/Classes/Privacy Objects";
 			sourceTree = "<group>";
 		};
 		1033A8B7ED4A7A7BB5CEDD018F830CD5 /* Support Files */ = {
@@ -607,7 +607,7 @@
 				58DEAE4765F909AB4D72FEAA3593D937 /* Privacy.swift */,
 				BC5F6C12A243192E498BC616A5955A22 /* Privacy+Endpoints.swift */,
 				1F394AD7D8668B2972D26B9259B727EC /* Helper Types */,
-				0FA52FDC1092F30D3BF9B15775D68FAD /* PrivacyObjects */,
+				0FA52FDC1092F30D3BF9B15775D68FAD /* Privacy Objects */,
 				7B61590649258E9476DFB3846DA7AC0D /* Pod */,
 				8612DE1BA708E0AF2A3956319D2F5114 /* Support Files */,
 			);

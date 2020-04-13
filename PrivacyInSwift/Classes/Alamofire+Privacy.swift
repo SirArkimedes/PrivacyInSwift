@@ -20,10 +20,10 @@ struct AlamofirePrivacy {
         parameters: [String: AnyHashable]? = nil,
         completion: @escaping (Result<Page<T>, Error>) -> ()
     ) {
-        let r = createRoute(with: route)
+        let customRoute = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
         AF.request(
-            r,
+            customRoute,
             method: .get,
             parameters: parameters,
             headers: headers
@@ -46,10 +46,10 @@ struct AlamofirePrivacy {
         route: String,
         parameters: [String: AnyHashable]
     ) {
-        let r = createRoute(with: route)
+        let customRoute = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
         AF.request(
-            r,
+            customRoute,
             method: .post,
             parameters: parameters,
             encoding: JSONEncoding.default,
@@ -69,10 +69,10 @@ struct AlamofirePrivacy {
         route: String,
         parameters: [String: AnyHashable]
     ) {
-        let r = createRoute(with: route)
+        let customRoute = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
         AF.request(
-            r,
+            customRoute,
             method: .put,
             parameters: parameters,
             encoding: JSONEncoding.default,

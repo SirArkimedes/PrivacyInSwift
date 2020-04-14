@@ -36,14 +36,18 @@ extension PrivacyInSwift {
         }
     }
 
-    public func createCard() {
-        AlamofirePrivacy.post(route: "card", parameters: ["type": "SINGLE_USE"])
+    public func createCard(completion: @escaping (Result<FullCard, Error>) -> ()) {
+        AlamofirePrivacy.post(route: "card", parameters: ["type": "SINGLE_USE"]) { (result: Result<FullCard, Error>) in
+            completion(result)
+        }
     }
 
-    public func updateCard() {
+    public func updateCard(completion: @escaping (Result<FullCard, Error>) -> ()) {
         AlamofirePrivacy.put(route: "card", parameters: [
             "card_token": "52a89ed9-764c-4744-a20a-19b274c0e5dc",
             "memo": "Testing"
-        ])
+        ]) { (result: Result<FullCard, Error>) in
+            completion(result)
+        }
     }
 }

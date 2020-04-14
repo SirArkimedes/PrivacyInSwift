@@ -42,9 +42,10 @@ struct AlamofirePrivacy {
         }
     }
 
-    static func post(
+    static func post<T: JSONModelType>(
         route: String,
-        parameters: [String: AnyHashable]
+        parameters: [String: AnyHashable],
+        completion: @escaping (Result<T, Error>) -> ()
     ) {
         let customRoute = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
@@ -58,16 +59,21 @@ struct AlamofirePrivacy {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+                if let object = try? T(json: json) {
+                    completion(.success(object))
+                } else {
+                    completion(.failure(NSError()))
+                }
             case .failure(let error):
-                print(error)
+                completion(.failure(error))
             }
         }
     }
 
-    static func put(
+    static func put<T: JSONModelType>(
         route: String,
-        parameters: [String: AnyHashable]
+        parameters: [String: AnyHashable],
+        completion: @escaping (Result<T, Error>) -> ()
     ) {
         let customRoute = createRoute(with: route)
         let headers = standardHeadersAppendingApiKey()
@@ -81,9 +87,13 @@ struct AlamofirePrivacy {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+                if let object = try? T(json: json) {
+                    completion(.success(object))
+                } else {
+                    completion(.failure(NSError()))
+                }
             case .failure(let error):
-                print(error)
+                completion(.failure(error))
             }
         }
     }

@@ -12,14 +12,14 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        Privacy.listCards { result in
-            switch result {
-            case .success(let cards):
-                print(cards)
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        Privacy.listCards { result in
+//            switch result {
+//            case .success(let cards):
+//                print(cards)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
 //        Privacy.getCard(for: "") { result in
 //            switch result {
 //            case .success(let card):
@@ -30,7 +30,14 @@ class ViewController: UIViewController {
 //        }
 
 //        Privacy.createCard()
-//        Privacy.updateCard()
+        Privacy.updateCard { result in
+            switch result {
+            case .success(let card):
+                print(card)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

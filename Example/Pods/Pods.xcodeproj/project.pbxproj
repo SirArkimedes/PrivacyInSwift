@@ -54,6 +54,7 @@
 		48F15AE2F06B8500AD60C39BB45280A3 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53DC10F4B037C35B707F6BEA464E64D /* NSBundle+CurrentTestBundle.swift */; };
 		492CD55C9F4EF417FD39F61BE18E2970 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE054A82E353DEB309705DCFDD3A6D /* JSONObject.swift */; };
 		4957E8172444068600307D6C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957E8162444068600307D6C /* Page.swift */; };
+		49DC44812445627500194CD1 /* DataWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC44802445627500194CD1 /* DataWrapped.swift */; };
 		4A1B85AEDC3DB75FC35A3F5438B0AD81 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F08A8578B19B46B4D85B66C64FF08E /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		4AAB3F2054BD0939C95D961A3BAA43B4 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F5E78D5401B1EE794083F0878911E7 /* ParameterEncoding.swift */; };
 		4B97BD308458A93E1F03EF7A7D5D4DCE /* RaisesException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963CFDC9967544703A898DF286766D30 /* RaisesException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -326,6 +327,7 @@
 		45BE054A82E353DEB309705DCFDD3A6D /* JSONObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSONObject.swift; path = SwiftyJSONModel/JSONObject.swift; sourceTree = "<group>"; };
 		477E6F9E7CBBE28E424CFA7CCB0A3258 /* Pods-PrivacyInSwift_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PrivacyInSwift_Example-Info.plist"; sourceTree = "<group>"; };
 		4957E8162444068600307D6C /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		49DC44802445627500194CD1 /* DataWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWrapped.swift; sourceTree = "<group>"; };
 		4D9F6F0AEF6E6A3C84B0287680C4477B /* PrivacyInSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PrivacyInSwift-Info.plist"; sourceTree = "<group>"; };
 		4EE11B8B4EE88B674D3263ACFE639987 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		524F5B9B976350D4CB7A4981C18BEA50 /* CwlCatchException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlCatchException.m; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchExceptionSupport/CwlCatchException.m; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			children = (
 				C332C8530208667F92D7CC0A2F5AD2B1 /* FullCard.swift */,
 				DAA6642FDADE0307AB5BC08C559AE409 /* FundingAccount.swift */,
+				49DC44802445627500194CD1 /* DataWrapped.swift */,
 			);
 			name = "Privacy Objects";
 			path = "PrivacyInSwift/Classes/Privacy Objects";
@@ -1321,6 +1324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E4C648A10656D2704F1360E76BFD6CA /* Alamofire+Privacy.swift in Sources */,
+				49DC44812445627500194CD1 /* DataWrapped.swift in Sources */,
 				D4C3A633AD2E8ACCD607FF8E4938B440 /* ApiVersion.swift in Sources */,
 				719B555B0EE1818EB8C69BA20434311C /* Environment.swift in Sources */,
 				BF639B5D544F74385E78C223D46C1B6C /* FullCard.swift in Sources */,

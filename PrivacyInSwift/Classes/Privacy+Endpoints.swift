@@ -21,8 +21,14 @@ extension PrivacyInSwift {
         }
     }
 
-    public func getCard(for token: String, completion: @escaping (Result<FullCard, Error>) -> ()) {
-        AlamofirePrivacy.get(route: "card", parameters: ["card_token": token]) { (result: Result<Page<FullCard>, Error>) in
+    public func getCard(
+        for token: String,
+        completion: @escaping (Result<FullCard, Error>) -> ()
+    ) {
+        AlamofirePrivacy.get(
+            route: "card",
+            parameters: ["card_token": token]
+        ) { (result: Result<Page<FullCard>, Error>) in
             switch result {
             case .success(let page):
                 if page.data.count == 1 {
@@ -37,7 +43,10 @@ extension PrivacyInSwift {
     }
 
     public func createCard(completion: @escaping (Result<FullCard, Error>) -> ()) {
-        AlamofirePrivacy.post(route: "card", parameters: ["type": "SINGLE_USE"]) { (result: Result<FullCard, Error>) in
+        AlamofirePrivacy.post(
+            route: "card",
+            parameters: ["type": "SINGLE_USE"]
+        ) { (result: Result<FullCard, Error>) in
             completion(result)
         }
     }
@@ -48,6 +57,33 @@ extension PrivacyInSwift {
             "memo": "Testing"
         ]) { (result: Result<FullCard, Error>) in
             completion(result)
+        }
+    }
+
+    public func addBank(
+        routingNumber: String,
+        accountNumber: String,
+        accountName: String? = nil,
+        completion: @escaping (Result<FundingAccount, Error>) -> ()
+    ) {
+        var parameters: [String: AnyHashable] = [
+            "routing_number": routingNumber,
+            "account_number": accountNumber,
+        ]
+        if let accountName = accountName {
+            parameters["account_name"] = accountName
+        }
+
+        AlamofirePrivacy.post(
+            route: "fundingsource/bank",
+            parameters: parameters
+        ) { (result: Result<DataWrapped<FundingAccount>, Error>) in
+            switch result {
+            case .success(let dataWrapped):
+                completion(.success(dataWrapped.data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

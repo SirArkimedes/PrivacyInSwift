@@ -30,10 +30,19 @@ class ViewController: UIViewController {
 //        }
 
 //        Privacy.createCard()
-        Privacy.updateCard { result in
+//        Privacy.updateCard { result in
+//            switch result {
+//            case .success(let card):
+//                print(card)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+
+        Privacy.addBank(routingNumber: "123456789", accountNumber: "123456789012") { result in
             switch result {
-            case .success(let card):
-                print(card)
+            case .success(let account):
+                print(account)
             case .failure(let error):
                 print(error)
             }

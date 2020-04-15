@@ -28,8 +28,8 @@ import SwiftyJSONModel
    }
  }
  ```
- This example has an outside value that is just "data" and then a `FundingAccount` sits inside
- a nested json dictionary.
+ This example has an outside value that is just "data" and a `FundingAccount` sits inside the nested
+ JSON dictionary.
 */
 struct DataWrapped<T: JSONModelType>: JSONModelType {
     var data: T

@@ -11,7 +11,7 @@ import Alamofire
 extension PrivacyInSwift {
 
     public func listCards(completion: @escaping (Result<[FullCard], Error>) -> ()) {
-        AlamofirePrivacy.get(route: "card") { (result: Result<Page<FullCard>, Error>) in
+        AlamofirePrivacy.pagedGet(route: "card") { (result: Result<Page<FullCard>, Error>) in
             switch result {
             case .success(let page):
                 completion(.success(page.data))
@@ -25,7 +25,7 @@ extension PrivacyInSwift {
         for token: String,
         completion: @escaping (Result<FullCard, Error>) -> ()
     ) {
-        AlamofirePrivacy.get(
+        AlamofirePrivacy.pagedGet(
             route: "card",
             parameters: ["card_token": token]
         ) { (result: Result<Page<FullCard>, Error>) in
@@ -40,6 +40,33 @@ extension PrivacyInSwift {
                 completion(.failure(error))
             }
         }
+    }
+
+    private func listFundingAccounts(
+        type: String? = nil,
+        completion: @escaping (Result<[FundingAccount], Error>) -> ()
+    ) {
+        let route: String
+        if let type = type {
+            route = "fundingsource/\(type)"
+        } else {
+            route = "fundingsource"
+        }
+        AlamofirePrivacy.get(route: route) { (result: Result<[FundingAccount], Error>) in
+            completion(result)
+        }
+    }
+
+    public func listFundingAccounts(completion: @escaping (Result<[FundingAccount], Error>) -> ()) {
+        listFundingAccounts(type: nil, completion: completion)
+    }
+
+    public func listFundingBanks(completion: @escaping (Result<[FundingAccount], Error>) -> ()) {
+        listFundingAccounts(type: "bank", completion: completion)
+    }
+
+    public func listFundingCards(completion: @escaping (Result<[FundingAccount], Error>) -> ()) {
+        listFundingAccounts(type: "card", completion: completion)
     }
 
     public func createCard(completion: @escaping (Result<FullCard, Error>) -> ()) {

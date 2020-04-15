@@ -15,7 +15,7 @@ struct AlamofirePrivacy {
 
     // MARK: - Builders
 
-    static func get<T: JSONModelType>(
+    static func pagedGet<T: JSONModelType>(
         route: String,
         parameters: [String: AnyHashable]? = nil,
         completion: @escaping (Result<Page<T>, Error>) -> ()
@@ -36,6 +36,35 @@ struct AlamofirePrivacy {
                 } else {
                     completion(.failure(NSError()))
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    static func get<T: JSONModelType>(
+        route: String,
+        parameters: [String: AnyHashable]? = nil,
+        completion: @escaping (Result<[T], Error>) -> ()
+    ) {
+        let customRoute = createRoute(with: route)
+        let headers = standardHeadersAppendingApiKey()
+        AF.request(
+            customRoute,
+            method: .get,
+            parameters: parameters,
+            headers: headers
+        ).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                var objects = [T]()
+                for (_, value) in json {
+                    if let object = try? T(json: value) {
+                        objects.append(object)
+                    }
+                }
+                completion(.success(objects))
             case .failure(let error):
                 completion(.failure(error))
             }

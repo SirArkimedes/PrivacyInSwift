@@ -12,40 +12,25 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Privacy.listCards { result in
-//            switch result {
-//            case .success(let cards):
-//                print(cards)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//        Privacy.getCard(for: "") { result in
-//            switch result {
-//            case .success(let card):
-//                print(card)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+//        Privacy.listCards { result in self.standardHandler(result: result) }
+//        Privacy.getCard(for: "") { result in self.standardHandler(result: result) }
 
-//        Privacy.createCard()
-//        Privacy.updateCard { result in
-//            switch result {
-//            case .success(let card):
-//                print(card)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        Privacy.listFundingAccounts { result in self.standardHandler(result: result) }
 
-        Privacy.addBank(routingNumber: "123456789", accountNumber: "123456789012") { result in
-            switch result {
-            case .success(let account):
-                print(account)
-            case .failure(let error):
-                print(error)
-            }
+//        Privacy.createCard { result in self.standardHandler(result: result) }
+//        Privacy.updateCard { result in self.standardHandler(result: result) }
+
+//        Privacy.addBank(routingNumber: "123456789", accountNumber: "123456789012"){ result in
+//            self.standardHandler(result: result)
+//        }
+    }
+
+    private func standardHandler<T>(result: Result<T, Error>) {
+        switch result {
+        case .success(let value):
+            print(value)
+        case .failure(let error):
+            print(error)
         }
     }
 }

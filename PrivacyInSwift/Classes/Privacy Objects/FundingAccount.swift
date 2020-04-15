@@ -14,14 +14,14 @@ public struct FundingAccount {
     /// A globally unique identifier for this FundingAccount
     var token: String
 
-    /// Account name identifying the funding source. This may be null
-    var accountName: String?
-    /// An ISO 8601 string representing when this funding source was added to the Privacy account. This may be null
-    var created: String?
-    /// The last 4 digits of the account (e.g. bank account, debit card) associated with this `FundingAccount`. This may be null
-    var lastFour: String?
-    /// The nickname given to the `FundingAccount` or null if it has no nickname
-    var nickname: String?
+    /// Account name identifying the funding source. This may be empty
+    var accountName: String
+    /// An ISO 8601 string representing when this funding source was added to the Privacy account. This may be empty
+    var created: String
+    /// The last 4 digits of the account (e.g. bank account, debit card) associated with this `FundingAccount`. This may be empty
+    var lastFour: String
+    /// The nickname given to the `FundingAccount` or empty if it has no nickname
+    var nickname: String
     /// See `State`
     var state: State
     /// See `FundingType`

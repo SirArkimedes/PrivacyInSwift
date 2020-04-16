@@ -83,8 +83,8 @@ extension PrivacyInSwift {
      - Parameter spendLimitDuration: Amount (in cents) to limit approved authorizations. Transaction
      requests above the spend limit will be declined.
      - Parameter state: See `Card.State`. Precondition: Cannot pass `Card.State.CLOSED`.
-     - Parameter completion: A `Result` closure. Returns a `Card` if the card creation succeded or
-     an `Error` if the request fails or we cannot parse the data.
+     - Parameter completion: A `Result` closure. Returns a `Card` if the card creation succeded.
+     Returns an `Error` if the request fails or we cannot parse the data.
      */
     public func createCard(
         type: Card.CardType,
@@ -123,25 +123,25 @@ extension PrivacyInSwift {
     }
 
     /**
-    The endpoint relating to `PUT` on `/card`.
+     The endpoint relating to `PUT` on `/card`.
 
-    Updates the specified properties of the card. Unsupplied properties will remain unchanged.
+     Updates the specified properties of the card. Unsupplied properties will remain unchanged.
      More details: https://developer.privacy.com/docs#endpoints-update-card
 
-    - Note: Setting a card to a CLOSED state is a final action that cannot be undone.
+     - Note: Setting a card to a CLOSED state is a final action that cannot be undone.
 
-    - Parameter cardToken: The unique token of the card to update.
-    - Parameter state: See `Card.State`.
-    - Parameter fundingToken: The token for the desired `FundingAccount` to use when making
+     - Parameter cardToken: The unique token of the card to update.
+     - Parameter state: See `Card.State`.
+     - Parameter fundingToken: The token for the desired `FundingAccount` to use when making
      transactions with this card.
-    - Parameter memo: Friendly name to identify the card.
-    - Parameter spendLimit: The token for the desired `FundingAccount` to use when making
+     - Parameter memo: Friendly name to identify the card.
+     - Parameter spendLimit: The token for the desired `FundingAccount` to use when making
      transactions with this card.
-    - Parameter spendLimitDuration: Amount (in cents) to limit approved authorizations. Transaction
+     - Parameter spendLimitDuration: Amount (in cents) to limit approved authorizations. Transaction
      requests above the spend limit will be declined.
-    - Parameter completion: A `Result` closure. Returns a `Card` if the card update succeded or an
-     `Error` if the request fails or we cannot parse the data.
-    */
+     - Parameter completion: A `Result` closure. Returns a `Card` if the card update succeded.
+     Returns an `Error` if the request fails or we cannot parse the data.
+     */
     public func updateCard(
         cardToken: String,
         state: Card.State? = nil,
@@ -178,6 +178,20 @@ extension PrivacyInSwift {
         }
     }
 
+    /**
+     The endpoint relating to `POST` on `/fundingsource/bank`.
+
+     Adds a bank account as a funding source using routing and account numbers. Returns a
+     `FundingAccount` object containing the bank information.
+     More details: https://developer.privacy.com/docs#endpoints-add-bank-account
+
+     - Parameter routingNumber: The routing number of the bank account.
+     - Parameter accountNumber: The account number of the bank account.
+     - Parameter accountName: The name associated with the bank account. This property is only for
+     identification purposes, and has no bearing on the external properties of the bank.
+     - Parameter completion: A `Result` closure. Returns a `FundingAccount` if the bank added
+     successfully. Returns an `Error` if the request fails or we cannot parse the data.
+     */
     public func addBank(
         routingNumber: String,
         accountNumber: String,
@@ -189,7 +203,7 @@ extension PrivacyInSwift {
             "account_number": accountNumber,
         ]
         if let accountName = accountName {
-            parameters["account_name"] = accountName
+            parameters[FundingAccount.PropertyKey.accountName.rawValue] = accountName
         }
 
         AlamofirePrivacy.post(

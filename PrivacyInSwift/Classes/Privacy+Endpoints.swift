@@ -10,8 +10,8 @@ import Alamofire
 
 extension PrivacyInSwift {
 
-    public func listCards(completion: @escaping (Result<[FullCard], Error>) -> ()) {
-        AlamofirePrivacy.pagedGet(route: "card") { (result: Result<Page<FullCard>, Error>) in
+    public func listCards(completion: @escaping (Result<[Card], Error>) -> ()) {
+        AlamofirePrivacy.pagedGet(route: "card") { (result: Result<Page<Card>, Error>) in
             switch result {
             case .success(let page):
                 completion(.success(page.data))
@@ -23,12 +23,12 @@ extension PrivacyInSwift {
 
     public func getCard(
         for token: String,
-        completion: @escaping (Result<FullCard, Error>) -> ()
+        completion: @escaping (Result<Card, Error>) -> ()
     ) {
         AlamofirePrivacy.pagedGet(
             route: "card",
             parameters: ["card_token": token]
-        ) { (result: Result<Page<FullCard>, Error>) in
+        ) { (result: Result<Page<Card>, Error>) in
             switch result {
             case .success(let page):
                 if page.data.count == 1 {
@@ -69,20 +69,20 @@ extension PrivacyInSwift {
         listFundingAccounts(type: "card", completion: completion)
     }
 
-    public func createCard(completion: @escaping (Result<FullCard, Error>) -> ()) {
+    public func createCard(completion: @escaping (Result<Card, Error>) -> ()) {
         AlamofirePrivacy.post(
             route: "card",
             parameters: ["type": "SINGLE_USE"]
-        ) { (result: Result<FullCard, Error>) in
+        ) { (result: Result<Card, Error>) in
             completion(result)
         }
     }
 
-    public func updateCard(completion: @escaping (Result<FullCard, Error>) -> ()) {
+    public func updateCard(completion: @escaping (Result<Card, Error>) -> ()) {
         AlamofirePrivacy.put(route: "card", parameters: [
             "card_token": "52a89ed9-764c-4744-a20a-19b274c0e5dc",
             "memo": "Testing"
-        ]) { (result: Result<FullCard, Error>) in
+        ]) { (result: Result<Card, Error>) in
             completion(result)
         }
     }

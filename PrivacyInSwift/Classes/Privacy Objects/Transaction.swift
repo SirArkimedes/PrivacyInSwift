@@ -17,8 +17,8 @@ public struct Transaction {
 
     /// Authorization amount (in cents) of the transaction. This may change over time
     var amount: Int
-    /// See `FullCard`
-    var card: FullCard
+    /// See `Card`
+    var card: Card
     /// See `Event`
     var events: [Event]
     /// A list of objects that describe how this transaction was funded, with the amount represented in cents. A reference to the funding account for the card that made this transaction may appear here and the token will match the token for the funding account in the card field. If any promotional credit was used in paying for this transaction, its type will be PROMO.

@@ -1,5 +1,5 @@
 //
-//  FullCard.swift
+//  Card.swift
 //  PrivacyInSwift
 //
 //  Created by Andrew Robinson on 4/11/20.
@@ -8,10 +8,10 @@
 import Foundation
 import SwiftyJSONModel
 
-// MARK: - FullCard
+// MARK: - Card
 
 /// https://developer.privacy.com/docs#schema-card
-public struct FullCard {
+public struct Card {
     /// Globally unique identifier
     var token: String
 
@@ -45,7 +45,7 @@ public struct FullCard {
 
 // MARK: - Card types
 
-extension FullCard {
+extension Card {
     public enum SpendLimitDuration: String, JSONString {
         case TRANSACTION
         case MONTHLY
@@ -68,7 +68,7 @@ extension FullCard {
 
 // MARK: - JSONModelType
 
-extension FullCard: JSONModelType {
+extension Card: JSONModelType {
     public enum PropertyKey: String {
         case token
         case created

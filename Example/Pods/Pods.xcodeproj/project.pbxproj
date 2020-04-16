@@ -136,7 +136,7 @@
 		BE2E0A9AC5E2019BFD31452E96ED83D9 /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F227E5D5EC34E8CC2A9D1895D70DD8 /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		BEDC36DEA21352A0F346A2513EE0540E /* QuickSpecBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D13840E6895ED7590E54AEB153DA0F /* QuickSpecBase.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BF162FE488440AC9824E22EF6BD760FC /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FAF9F36830F938123DC37AB497617C /* DSL+Wait.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		BF639B5D544F74385E78C223D46C1B6C /* FullCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C332C8530208667F92D7CC0A2F5AD2B1 /* FullCard.swift */; };
+		BF639B5D544F74385E78C223D46C1B6C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C332C8530208667F92D7CC0A2F5AD2B1 /* Card.swift */; };
 		C098C153F2988A344EAD8EE4C0CDF882 /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11AA9FF3B41D17B609B6687A5697DC /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C42E25AEAE4758760D9239D25E88FEAF /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D5465EE52FF31AD99EF2B5A4C59C0BD /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C971A8D42C7C043DC4970A69B81546A7 /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 854F2C5C6B88555F00AB683E1B475CCE /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -429,7 +429,7 @@
 		BFA888052BA0DD96116D7656EBE212BD /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
 		BFECDEE284DA8B03AAEC826ECA53690A /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		C1259F60D71243F20A886ED120D94695 /* PrivacyInSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = PrivacyInSwift.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C332C8530208667F92D7CC0A2F5AD2B1 /* FullCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FullCard.swift; sourceTree = "<group>"; };
+		C332C8530208667F92D7CC0A2F5AD2B1 /* Card.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C411DFCEDEFEF80A0B193FED9DB58833 /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		C4270B60C6F00BA17E45952DFF23C1EA /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		C6108F151EC9D0F4C49DBE9EDCE6F745 /* Pods-PrivacyInSwift_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PrivacyInSwift_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -567,9 +567,9 @@
 		0FA52FDC1092F30D3BF9B15775D68FAD /* Privacy Objects */ = {
 			isa = PBXGroup;
 			children = (
+				C332C8530208667F92D7CC0A2F5AD2B1 /* Card.swift */,
 				49DC44802445627500194CD1 /* DataWrapped.swift */,
 				49DC44862446B33200194CD1 /* Event.swift */,
-				C332C8530208667F92D7CC0A2F5AD2B1 /* FullCard.swift */,
 				DAA6642FDADE0307AB5BC08C559AE409 /* FundingAccount.swift */,
 				49DC44842446B1FD00194CD1 /* Merchant.swift */,
 				49DC44822446B1EE00194CD1 /* Transaction.swift */,
@@ -1337,7 +1337,7 @@
 				49DC44812445627500194CD1 /* DataWrapped.swift in Sources */,
 				D4C3A633AD2E8ACCD607FF8E4938B440 /* ApiVersion.swift in Sources */,
 				719B555B0EE1818EB8C69BA20434311C /* Environment.swift in Sources */,
-				BF639B5D544F74385E78C223D46C1B6C /* FullCard.swift in Sources */,
+				BF639B5D544F74385E78C223D46C1B6C /* Card.swift in Sources */,
 				301C4088B91D4E75C3DCDB124FED5FB8 /* FundingAccount.swift in Sources */,
 				4957E8172444068600307D6C /* Page.swift in Sources */,
 				D3EDA611D4D2D02EE8F425CF30EFC5D1 /* Privacy+Endpoints.swift in Sources */,

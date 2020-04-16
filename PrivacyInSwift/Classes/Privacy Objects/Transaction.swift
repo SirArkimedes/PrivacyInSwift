@@ -22,7 +22,7 @@ public struct Transaction {
     /// See `Event`
     var events: [Event]
     /// A list of objects that describe how this transaction was funded, with the amount represented in cents. A reference to the funding account for the card that made this transaction may appear here and the token will match the token for the funding account in the card field. If any promotional credit was used in paying for this transaction, its type will be PROMO.
-    var funding: [JSON]
+    var funding: [TransactionFunding]
     /// See `Merchant`
     var merchant: Merchant
     /// APPROVED or decline reason.
@@ -83,6 +83,52 @@ extension Transaction: JSONModelType {
             .result: result,
             .settledAmount: settledAmount,
             .status: status,
+        ]
+    }
+}
+
+// MARK: - TransactionFunding
+
+/**
+ This type is used for the nested data in `Transaction`'s `funding` value. This contains information
+ related to a `FundingAccount` but not a full `FundingAccount`.
+
+ Docs from `Transaction`:
+ ```
+ "funding": [
+      {
+          "amount": Integer,
+          "token": String,
+          "type": String
+      }
+  ],
+ ```
+ */
+public struct TransactionFunding: JSONModelType {
+    /// TODO: No docs.
+    var amount: Int
+    /// TODO: No docs.
+    var token: String
+    /// TODO: No docs.
+    var type: FundingAccount.FundingType
+
+    public enum PropertyKey: String {
+        case amount
+        case token
+        case type
+    }
+
+    public init(object: JSONObject<PropertyKey>) throws {
+        amount = try object.value(for: .amount)
+        token = try object.value(for: .token)
+        type = try object.value(for: .type)
+    }
+
+    public var dictValue: [PropertyKey: JSONRepresentable?] {
+        return [
+            .amount: amount,
+            .token: token,
+            .type: type,
         ]
     }
 }

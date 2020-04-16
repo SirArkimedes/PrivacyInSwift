@@ -16,7 +16,7 @@ public struct Card {
     var token: String
 
     /// An ISO 8601 timestamp for when the card was created
-    var created: String
+    var created: Date
     /// Three digit cvv printed on the back of the card
     var cvv: String
     /// See `FundingAccount`
@@ -89,7 +89,7 @@ extension Card: JSONModelType {
     public init(object: JSONObject<PropertyKey>) throws {
         token = try object.value(for: .token)
 
-        created = try object.value(for: .created)
+        created = try ISO8601DateFormatter().date(from: object.value(for: .created))!
         cvv = try object.value(for: .cvv)
         funding = try object.value(for: .funding)
         expMonth = try object.value(for: .expMonth)
@@ -105,9 +105,11 @@ extension Card: JSONModelType {
     }
 
     public var dictValue: [PropertyKey: JSONRepresentable?] {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = .withFullDate
         return [
             .token: token,
-            .created: created,
+            .created: dateFormatter.string(from: created),
             .cvv: cvv,
             .funding: funding,
             .expMonth: expMonth,

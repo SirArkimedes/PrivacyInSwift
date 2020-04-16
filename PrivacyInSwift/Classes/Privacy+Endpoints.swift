@@ -10,8 +10,37 @@ import Alamofire
 
 extension PrivacyInSwift {
 
-    public func listCards(completion: @escaping (Result<[Card], Error>) -> ()) {
-        AlamofirePrivacy.pagedGet(route: "card") { (result: Result<Page<Card>, Error>) in
+    /**
+     The endpoint relating to `GET` on `/card`.
+
+     Use `getCard(...)` to get information about an individual card.
+     More details: https://developer.privacy.com/docs#endpoints-list-cards
+
+     - Note: Does not currently support begin and end date filtering.
+
+     - Parameter page: For pagination. The default is one.
+     - Parameter pageSize: For pagination. The default value page size is 50 and the maximum is 1,000
+     - Parameter completion: A `Result` closure. Returns `Card`s if the request succeeded. Returns
+     an `Error` if the request fails or we cannot parse the data.
+     */
+    public func listCards(
+        page: Int? = nil,
+        pageSize: Int? = nil,
+        completion: @escaping (Result<[Card], Error>) -> ()
+    ) {
+        // TODO: Add begin and end parameters.
+        var parameters: [String: AnyHashable] = [:]
+        if let page = page {
+            parameters["page"] = page
+        }
+        if let pageSize = pageSize {
+            parameters["page_size"] = pageSize
+        }
+
+        AlamofirePrivacy.pagedGet(
+            route: "card",
+            parameters: parameters
+        ) { (result: Result<Page<Card>, Error>) in
             switch result {
             case .success(let page):
                 completion(.success(page.data))
@@ -21,6 +50,15 @@ extension PrivacyInSwift {
         }
     }
 
+    /**
+    The endpoint relating to `GET` on `/card`.
+
+    More details: https://developer.privacy.com/docs#endpoints-list-cards
+
+    - Parameter token: The token for the card to retrieve.
+    - Parameter completion: A `Result` closure. Returns a `Card` if the request succeeded. Returns
+    an `Error` if the request fails or we cannot parse the data.
+    */
     public func getCard(
         for token: String,
         completion: @escaping (Result<Card, Error>) -> ()

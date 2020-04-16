@@ -95,14 +95,38 @@ extension PrivacyInSwift {
         }
     }
 
+    /**
+     The endpoint relating to `GET` on `/fundingsource`.
+
+     More details: https://developer.privacy.com/docs#endpoints-list-funding-accounts
+
+     - Parameter completion: A `Result` closure. Returns `FundingAccounts`s if the request succeeds.
+     Returns an `Error` if the request fails or we cannot parse the data.
+     */
     public func listFundingAccounts(completion: @escaping (Result<[FundingAccount], Error>) -> ()) {
         listFundingAccounts(type: nil, completion: completion)
     }
 
+    /**
+    The endpoint relating to `GET` on `/fundingsource/bank`.
+
+    More details: https://developer.privacy.com/docs#endpoints-list-funding-accounts
+
+    - Parameter completion: A `Result` closure. Returns `FundingAccounts`s if the request succeeds.
+    Returns an `Error` if the request fails or we cannot parse the data.
+    */
     public func listFundingBanks(completion: @escaping (Result<[FundingAccount], Error>) -> ()) {
         listFundingAccounts(type: "bank", completion: completion)
     }
 
+    /**
+    The endpoint relating to `GET` on `/fundingsource/card`.
+
+    More details: https://developer.privacy.com/docs#endpoints-list-funding-accounts
+
+    - Parameter completion: A `Result` closure. Returns `FundingAccounts`s if the request succeeds.
+    Returns an `Error` if the request fails or we cannot parse the data.
+    */
     public func listFundingCards(completion: @escaping (Result<[FundingAccount], Error>) -> ()) {
         listFundingAccounts(type: "card", completion: completion)
     }

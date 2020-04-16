@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
         Privacy.listFundingAccounts { result in self.standardHandler(result: result) }
 
-//        Privacy.createCard { result in self.standardHandler(result: result) }
+//        Privacy.createCard(type: .UNLOCKED) { result in self.standardHandler(result: result) }
 //        Privacy.updateCard { result in self.standardHandler(result: result) }
 
 //        Privacy.addBank(routingNumber: "123456789", accountNumber: "123456789012"){ result in

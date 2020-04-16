@@ -12,13 +12,15 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Privacy.listCards { result in self.standardHandler(result: result) }
+        Privacy.listCards { result in self.standardHandler(result: result) }
 //        Privacy.getCard(for: "") { result in self.standardHandler(result: result) }
 
-        Privacy.listFundingAccounts { result in self.standardHandler(result: result) }
+//        Privacy.listFundingAccounts { result in self.standardHandler(result: result) }
 
 //        Privacy.createCard(type: .UNLOCKED) { result in self.standardHandler(result: result) }
-//        Privacy.updateCard { result in self.standardHandler(result: result) }
+//        Privacy.updateCard(cardToken: "c7e4a88f-deb6-4a4d-9726-e028d2f2a21e", state: .PAUSED) { result in
+//            self.standardHandler(result: result)
+//        }
 
 //        Privacy.addBank(routingNumber: "123456789", accountNumber: "123456789012"){ result in
 //            self.standardHandler(result: result)

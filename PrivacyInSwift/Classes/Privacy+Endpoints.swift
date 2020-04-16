@@ -70,26 +70,21 @@ extension PrivacyInSwift {
     }
 
     /**
-     The enpoint relating to `POST` `/card`.
+     The endpoint relating to `POST` on `/card`.
 
      More details: https://developer.privacy.com/docs#endpoints-create-card
 
-     - Parameter type:
-        See `Card.CardType`. Unlocked cards require additional privileges.
-     - Parameter memo:
-        Friendly name to identify the card.
-     - Parameter fundingToken:
-        The token for the desired `FundingAccount` to use when making transactions with this card.
-     - Parameter spendLimit:
-        The token for the desired `FundingAccount` to use when making transactions with this card.
-     - Parameter spendLimitDuration:
-        Amount (in cents) to limit approved authorizations. Transaction requests above the spend
-        limit will be declined.
-     - Parameter state:
-        See `Card.State`.
-     - Parameter completion:
-        A `Result` closure. Returns a `Card` if the card creation succeded or an `Error` if the
-        request fails or we cannot parse the data.
+     - Parameter type: See `Card.CardType`. Unlocked cards require additional privileges.
+     - Parameter memo: Friendly name to identify the card.
+     - Parameter fundingToken: The token for the desired `FundingAccount` to use when making
+     transactions with this card.
+     - Parameter spendLimit: The token for the desired `FundingAccount` to use when making
+     transactions with this card.
+     - Parameter spendLimitDuration: Amount (in cents) to limit approved authorizations. Transaction
+     requests above the spend limit will be declined.
+     - Parameter state: See `Card.State`. Precondition: Cannot pass `Card.State.CLOSED`.
+     - Parameter completion: A `Result` closure. Returns a `Card` if the card creation succeded or
+     an `Error` if the request fails or we cannot parse the data.
      */
     public func createCard(
         type: Card.CardType,
@@ -127,11 +122,58 @@ extension PrivacyInSwift {
         }
     }
 
-    public func updateCard(completion: @escaping (Result<Card, Error>) -> ()) {
-        AlamofirePrivacy.put(route: "card", parameters: [
-            "card_token": "52a89ed9-764c-4744-a20a-19b274c0e5dc",
-            "memo": "Testing"
-        ]) { (result: Result<Card, Error>) in
+    /**
+    The endpoint relating to `PUT` on `/card`.
+
+    Updates the specified properties of the card. Unsupplied properties will remain unchanged.
+     More details: https://developer.privacy.com/docs#endpoints-update-card
+
+    - Note: Setting a card to a CLOSED state is a final action that cannot be undone.
+
+    - Parameter cardToken: The unique token of the card to update.
+    - Parameter state: See `Card.State`.
+    - Parameter fundingToken: The token for the desired `FundingAccount` to use when making
+     transactions with this card.
+    - Parameter memo: Friendly name to identify the card.
+    - Parameter spendLimit: The token for the desired `FundingAccount` to use when making
+     transactions with this card.
+    - Parameter spendLimitDuration: Amount (in cents) to limit approved authorizations. Transaction
+     requests above the spend limit will be declined.
+    - Parameter completion: A `Result` closure. Returns a `Card` if the card update succeded or an
+     `Error` if the request fails or we cannot parse the data.
+    */
+    public func updateCard(
+        cardToken: String,
+        state: Card.State? = nil,
+        fundingToken: String? = nil,
+        memo: String? = nil,
+        spendLimit: Int? = nil,
+        spendLimitDuration: Card.SpendLimitDuration? = nil,
+        completion: @escaping (Result<Card, Error>) -> ()
+    ) {
+        var parameters: [String: AnyHashable] = [
+            "card_token": cardToken,
+        ]
+        if let state = state {
+            parameters[Card.PropertyKey.state.rawValue] = state.rawValue
+        }
+        if let fundingToken = fundingToken {
+            parameters["funding_token"] = fundingToken
+        }
+        if let memo = memo {
+            parameters[Card.PropertyKey.memo.rawValue] = memo
+        }
+        if let spendLimit = spendLimit {
+            parameters[Card.PropertyKey.spendLimit.rawValue] = spendLimit
+        }
+        if let spendLimitDuration = spendLimitDuration {
+            parameters[Card.PropertyKey.spendLimitDuration.rawValue] = spendLimitDuration
+        }
+
+        AlamofirePrivacy.put(
+            route: "card",
+            parameters: parameters
+        ) { (result: Result<Card, Error>) in
             completion(result)
         }
     }

@@ -105,11 +105,9 @@ extension Card: JSONModelType {
     }
 
     public var dictValue: [PropertyKey: JSONRepresentable?] {
-        let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.formatOptions = .withFullDate
         return [
             .token: token,
-            .created: dateFormatter.string(from: created),
+            .created: ISO8601DateFormatter().string(from: created),
             .cvv: cvv,
             .funding: funding,
             .expMonth: expMonth,

@@ -54,6 +54,7 @@
 		48F15AE2F06B8500AD60C39BB45280A3 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53DC10F4B037C35B707F6BEA464E64D /* NSBundle+CurrentTestBundle.swift */; };
 		492CD55C9F4EF417FD39F61BE18E2970 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE054A82E353DEB309705DCFDD3A6D /* JSONObject.swift */; };
 		4957E8172444068600307D6C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957E8162444068600307D6C /* Page.swift */; };
+		49C4659924622BF4003E8552 /* TransactionApprovalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C4659824622BF4003E8552 /* TransactionApprovalStatus.swift */; };
 		49DC44812445627500194CD1 /* DataWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC44802445627500194CD1 /* DataWrapped.swift */; };
 		49DC44832446B1EE00194CD1 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC44822446B1EE00194CD1 /* Transaction.swift */; };
 		49DC44852446B1FD00194CD1 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC44842446B1FD00194CD1 /* Merchant.swift */; };
@@ -330,6 +331,7 @@
 		45BE054A82E353DEB309705DCFDD3A6D /* JSONObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSONObject.swift; path = SwiftyJSONModel/JSONObject.swift; sourceTree = "<group>"; };
 		477E6F9E7CBBE28E424CFA7CCB0A3258 /* Pods-PrivacyInSwift_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PrivacyInSwift_Example-Info.plist"; sourceTree = "<group>"; };
 		4957E8162444068600307D6C /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		49C4659824622BF4003E8552 /* TransactionApprovalStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApprovalStatus.swift; sourceTree = "<group>"; };
 		49DC44802445627500194CD1 /* DataWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWrapped.swift; sourceTree = "<group>"; };
 		49DC44822446B1EE00194CD1 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		49DC44842446B1FD00194CD1 /* Merchant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 			children = (
 				A44C342835EC91E907C380755981D1C1 /* ApiVersion.swift */,
 				4957E8162444068600307D6C /* Page.swift */,
+				49C4659824622BF4003E8552 /* TransactionApprovalStatus.swift */,
 			);
 			name = "Helper Types";
 			path = "PrivacyInSwift/Classes/Helper Types";
@@ -1335,6 +1338,7 @@
 				49DC44832446B1EE00194CD1 /* Transaction.swift in Sources */,
 				7E4C648A10656D2704F1360E76BFD6CA /* Alamofire+Privacy.swift in Sources */,
 				49DC44812445627500194CD1 /* DataWrapped.swift in Sources */,
+				49C4659924622BF4003E8552 /* TransactionApprovalStatus.swift in Sources */,
 				D4C3A633AD2E8ACCD607FF8E4938B440 /* ApiVersion.swift in Sources */,
 				719B555B0EE1818EB8C69BA20434311C /* Environment.swift in Sources */,
 				BF639B5D544F74385E78C223D46C1B6C /* Card.swift in Sources */,

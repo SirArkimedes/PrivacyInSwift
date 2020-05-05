@@ -12,7 +12,7 @@ import PrivacyInSwift
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        Privacy.listCards { result in self.standardHandler(result: result) }
+//        Privacy.listCards { result in self.standardHandler(result: result) }
 //        Privacy.getCard(for: "") { result in self.standardHandler(result: result) }
 
 //        Privacy.listFundingAccounts { result in self.standardHandler(result: result) }
@@ -25,6 +25,7 @@ class ViewController: UIViewController {
 //        Privacy.addBank(routingNumber: "123456789", accountNumber: "123456789012"){ result in
 //            self.standardHandler(result: result)
 //        }
+        Privacy.listTransactions() { result in self.standardHandler(result: result) }
     }
 
     private func standardHandler<T>(result: Result<T, Error>) {

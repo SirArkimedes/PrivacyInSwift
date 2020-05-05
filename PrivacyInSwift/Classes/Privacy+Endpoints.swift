@@ -132,6 +132,47 @@ extension PrivacyInSwift {
     }
 
     /**
+     The endpoint relating to `GET` on `/transaction`.
+
+     More details: https://developer.privacy.com/#endpoints-list-transactions
+
+     - Note: Does not currently support begin and end date filtering.
+
+     - Parameter approvalStatus: Card filtering approval status. See `TransactionApprovalStatus`.
+     - Parameter page: For pagination. The default is one.
+     - Parameter pageSize: For pagination. The default value page size is 50 and the maximum is 1,000
+     - Parameter completion: A `Result` closure. Returns `Transaction`s if the request succeeded. Returns
+     an `Error` if the request fails or we cannot parse the data.
+     */
+    public func listTransactions(
+        approvalStatus: TransactionApprovalStatus = .all,
+        page: Int? = nil,
+        pageSize: Int? = nil,
+        completion: @escaping (Result<[Transaction], Error>) -> ()
+    ) {
+        // TODO: Add begin and end parameters.
+        var parameters: [String: AnyHashable] = [:]
+        if let page = page {
+            parameters["page"] = page
+        }
+        if let pageSize = pageSize {
+            parameters["page_size"] = pageSize
+        }
+
+        AlamofirePrivacy.pagedGet(
+            route: "transaction/\(approvalStatus.rawValue)",
+            parameters: parameters
+        ) { (result: Result<Page<Transaction>, Error>) in
+            switch result {
+            case .success(let page):
+                completion(.success(page.data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    /**
      The endpoint relating to `POST` on `/card`.
 
      More details: https://developer.privacy.com/docs#endpoints-create-card

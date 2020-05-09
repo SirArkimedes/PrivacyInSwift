@@ -1,4 +1,9 @@
+
+![Image of PrivacyInSwift](Marketing/Logo.png)
+
 # PrivacyInSwift
+
+A typed Swift wrapper around Privacy.com's API: api.privacy.com
 
 [![CI Status](https://img.shields.io/travis/SirArkimedes/PrivacyInSwift.svg?style=flat)](https://travis-ci.org/github/SirArkimedes/PrivacyInSwift)
 [![Version](https://img.shields.io/cocoapods/v/PrivacyInSwift.svg?style=flat)](https://cocoapods.org/pods/PrivacyInSwift)
@@ -13,7 +18,7 @@ To run the example project, clone the repo and run the Example app from the Exam
 
 ```ruby
 >= iOS 10.0
-``` 
+```
 
 ## Installation
 

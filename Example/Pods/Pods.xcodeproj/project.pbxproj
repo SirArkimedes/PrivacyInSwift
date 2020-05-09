@@ -570,7 +570,6 @@
 			isa = PBXGroup;
 			children = (
 				C332C8530208667F92D7CC0A2F5AD2B1 /* Card.swift */,
-				49DC44802445627500194CD1 /* DataWrapped.swift */,
 				49DC44862446B33200194CD1 /* Event.swift */,
 				DAA6642FDADE0307AB5BC08C559AE409 /* FundingAccount.swift */,
 				49DC44842446B1FD00194CD1 /* Merchant.swift */,
@@ -607,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				A44C342835EC91E907C380755981D1C1 /* ApiVersion.swift */,
+				49DC44802445627500194CD1 /* DataWrapped.swift */,
 				4957E8162444068600307D6C /* Page.swift */,
 				49C4659824622BF4003E8552 /* TransactionApprovalStatus.swift */,
 			);

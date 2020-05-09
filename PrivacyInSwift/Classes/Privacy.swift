@@ -5,9 +5,6 @@
 //  Created by Andrew Robinson on 4/11/20.
 //
 
-import Foundation
-
-
 /**
  The main interface between the PrivacyInSwift and Privacy.com API.
  */

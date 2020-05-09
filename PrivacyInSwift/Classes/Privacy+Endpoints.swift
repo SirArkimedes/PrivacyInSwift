@@ -5,7 +5,6 @@
 //  Created by Andrew Robinson on 4/11/20.
 //
 
-import Foundation
 import Alamofire
 
 extension PrivacyInSwift {

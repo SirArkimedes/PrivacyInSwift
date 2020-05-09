@@ -5,7 +5,6 @@
 //  Created by Andrew Robinson on 4/13/20.
 //
 
-import Foundation
 import SwiftyJSONModel
 
 // MARK: - DataWrapped

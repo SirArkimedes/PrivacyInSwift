@@ -5,7 +5,6 @@
 //  Created by Andrew Robinson on 4/12/20.
 //
 
-import Foundation
 import SwiftyJSON
 import SwiftyJSONModel
 

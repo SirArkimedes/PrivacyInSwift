@@ -297,7 +297,7 @@
 		1D20C6836322C2DC220DCFDA963D402B /* Quick-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Quick-Info.plist"; sourceTree = "<group>"; };
 		1D81A841E0F4E295AB0F8EDE47B014E8 /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
 		1DA17DC2FE7014DD0885D2D9892E50FC /* mach_excServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mach_excServer.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.h; sourceTree = "<group>"; };
-		204E4C199EFF2399084416F2C9D5990D /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = PrivacyInSwift/Classes/Environment.swift; sourceTree = "<group>"; };
+		204E4C199EFF2399084416F2C9D5990D /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		20C27AF12484DAFCF2F3D6B92FE32750 /* Pods_PrivacyInSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrivacyInSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C7DD7FE1528D0FB0587FED4120C845 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		225081DF9FCA004C17CC6955459871AE /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
@@ -607,6 +607,7 @@
 			children = (
 				A44C342835EC91E907C380755981D1C1 /* ApiVersion.swift */,
 				49DC44802445627500194CD1 /* DataWrapped.swift */,
+				204E4C199EFF2399084416F2C9D5990D /* Environment.swift */,
 				4957E8162444068600307D6C /* Page.swift */,
 				49C4659824622BF4003E8552 /* TransactionApprovalStatus.swift */,
 			);
@@ -618,7 +619,6 @@
 			isa = PBXGroup;
 			children = (
 				B7B324A7FEB747F484E9E423DFD6E7D1 /* Alamofire+Privacy.swift */,
-				204E4C199EFF2399084416F2C9D5990D /* Environment.swift */,
 				58DEAE4765F909AB4D72FEAA3593D937 /* Privacy.swift */,
 				BC5F6C12A243192E498BC616A5955A22 /* Privacy+Endpoints.swift */,
 				1F394AD7D8668B2972D26B9259B727EC /* Helper Types */,

@@ -29,6 +29,7 @@ A wrapper around the privacy.com API written in Swift.
   s.social_media_url = 'https://twitter.com/SirArkimedes'
 
   s.ios.deployment_target = '10.0'
+  s.swift_version         = '5.0'
 
   s.source_files = 'PrivacyInSwift/Classes/**/*'
   

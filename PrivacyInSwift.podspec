@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PrivacyInSwift'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A Swift wrapper around the Privacy API.'
 
 # This description is used to generate tags and improve search results.
